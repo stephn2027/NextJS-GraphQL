@@ -4,6 +4,7 @@ import {withItemData,statelessSessions} from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
 
 import 'dotenv/config';
+import { Product } from './schemas/Product';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/keystone-kicks';
@@ -32,7 +33,8 @@ export default withAuth(config({
   },
   lists: createSchema({
     //schema items go in here
-    User
+    User,
+    Product,
   }),
   ui: {
     //show the UI who has proper access  
