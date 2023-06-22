@@ -5,6 +5,8 @@ import { User } from './schemas/User';
 
 import 'dotenv/config';
 import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
+import { insertSeedData } from './seed-data';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/keystone-kicks';
@@ -35,6 +37,7 @@ export default withAuth(config({
     //schema items go in here
     User,
     Product,
+    ProductImage,
   }),
   ui: {
     //show the UI who has proper access  
@@ -50,6 +53,13 @@ export default withAuth(config({
     adapter: 'mongoose',
     url: databaseURL,
     //todo add data seeding here
+    async onConnect(keystone){
+      if(process.argv.includes('--seed-data')){
+        await insertSeedData(keystone);
+      }
+      
+    },
+    
   },
 })
 );
