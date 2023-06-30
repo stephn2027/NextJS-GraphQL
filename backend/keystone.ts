@@ -1,10 +1,12 @@
 import { createAuth } from '@keystone-next/auth';
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import {withItemData,statelessSessions} from '@keystone-next/keystone/session';
+import { ProductImage } from './schemas/ProductImage';
 import { User } from './schemas/User';
 
 import 'dotenv/config';
 import { Product } from './schemas/Product';
+import { insertSeedData } from './seed-data';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/keystone-kicks';
@@ -35,6 +37,7 @@ export default withAuth(config({
     //schema items go in here
     User,
     Product,
+    ProductImage,
   }),
   ui: {
     //show the UI who has proper access  
@@ -50,6 +53,13 @@ export default withAuth(config({
     adapter: 'mongoose',
     url: databaseURL,
     //todo add data seeding here
+    async onConnect(keystone) {
+      console.log('Connected TO THE DATABZWE');
+      if (process.argv.includes('--seed-data')) {
+        await insertSeedData(keystone);
+      }
+    },
+
   },
 })
 );
