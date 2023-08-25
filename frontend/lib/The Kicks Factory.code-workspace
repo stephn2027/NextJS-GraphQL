@@ -1,9 +1,6 @@
 {
 	"folders": [
 		{
-			"path": "../../../The Kicks Factory"
-		},
-		{
 			"path": "../.."
 		},
 		{
@@ -22,5 +19,7 @@
 			"path": "../../../starbucks-app"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
 }

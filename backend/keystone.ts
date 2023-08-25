@@ -16,7 +16,7 @@ const sessionConfig = {
   secret: process.env.COOKIE_SECRET,
 };
 
-const {withAuth} = createAuth({
+const { withAuth } = createAuth({
   listKey:'User',
   identityField:'email',
   secretField:'password',

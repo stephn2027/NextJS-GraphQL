@@ -41,10 +41,10 @@ export default function CreateProduct() {
   );
   return (
     <Form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        // const res = await createProduct();
-        // console.log(res);
+        const res = await createProduct();
+        console.log(res);
         console.log(inputs);
       }}
     >

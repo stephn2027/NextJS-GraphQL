@@ -32,10 +32,4 @@ MyApp.getInitialProps = async function ({ Component, ctx }) {
   return { pageProps };
 };
 
-MyApp.propTypes = {
-  Component: PropTypes.any,
-  pageProps: PropTypes.any,
-  apollo: PropTypes.any,
-};
-
 export default withData(MyApp);
